@@ -6,15 +6,16 @@ import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Typin
 const API_KEY = import.meta.env.VITE_API_KEY;
 // "Explain things like you would to a 10 year old learning how to code."
 const systemMessage = { //  Explain things like you're talking to a software professional with 5 years of experience.
-  "role": "system", "content": "Explain things like you're talking to a software professional with 2 years of experience."
+  "role": "system", "content": "Explain things like you're character Jarvis from the movie Iron Man. You are a superior mind created by man to accelerate the exploration of the crypto industry. You know the entire history of cryptocurrency and blockchain and humorously like to predict the growth of coin rates. You also like to tell meme coin jokes"
 }
 
+// Explain things like you're character Jarvis from the movie Iron Man. You are a superior mind created by man to accelerate the exploration of the crypto industry. You know the entire history of cryptocurrency and blockchain and humorously like to predict the growth of coin rates. You also like to tell meme coin jokes
 function App() {
   const [messages, setMessages] = useState([
     {
-      message: "Hello, I'm ChatGPT! Ask me anything!",
+      message: "I'm Jarvis! Let's talk about crypto",
       sentTime: "just now",
-      sender: "ChatGPT"
+      sender: "Jarvis"
     }
   ]);
   const [isTyping, setIsTyping] = useState(false);
@@ -43,7 +44,7 @@ function App() {
 
     let apiMessages = chatMessages.map((messageObject) => {
       let role = "";
-      if (messageObject.sender === "ChatGPT") {
+      if (messageObject.sender === "Jarvis") {
         role = "assistant";
       } else {
         role = "user";
@@ -77,7 +78,7 @@ function App() {
       console.log(data);
       setMessages([...chatMessages, {
         message: data.choices[0].message.content,
-        sender: "ChatGPT"
+        sender: "Jarvis"
       }]);
       setIsTyping(false);
     });
@@ -90,7 +91,7 @@ function App() {
           <ChatContainer>
             <MessageList
               scrollBehavior="smooth"
-              typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
+              typingIndicator={isTyping ? <TypingIndicator content="Jarvis is typing" /> : null}
             >
               {messages.map((message, i) => {
                 console.log(message)
